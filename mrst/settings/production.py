@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '939t0y9rr*zsqrzgvlwt258if+kad%y(z1ubp@+2fg!tp2v2gk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'tmrst.tech', 'www.tmrst.tech', 'blog.tmrst.tech']
+ALLOWED_HOSTS = ['www.mrst.tech', 'mrst.tech']
 
 
 # Application definition
@@ -57,8 +57,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'mrst.urls'
 ROOT_HOSTCONF = 'mrst.hosts'
 DEFAULT_HOST = 'www'
-DEFAULT_REDIRECT_URL = 'http://www.tmrst.tech:8000'
-PARENT_HOST = 'tmrst.tech'
+DEFAULT_REDIRECT_URL = 'http://www.mrst.tech'
+PARENT_HOST = 'mrst.tech'
 
 TEMPLATES = [
     {
@@ -127,10 +127,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
 
 SHORTCODE_MAX = 15

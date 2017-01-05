@@ -16,9 +16,6 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from django.conf import settings
-from django.conf.urls.static import static
-
 from shortener.views import redirect_view, HomeView
 
 urlpatterns = [
@@ -26,5 +23,3 @@ urlpatterns = [
     url(r'^$', HomeView.as_view()),
     url(r'^(?P<shortcode>[\w-]{6,15})/$', redirect_view, name='scode'),
 ]
-
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

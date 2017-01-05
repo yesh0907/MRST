@@ -1,7 +1,8 @@
+*.pyc
+staticfiles
+.env
 
-# Created by https://www.gitignore.io/api/django ,django,macos,sublimetext
-
-#!! ERROR: django  is undefined. Use list command to see defined gitignore types !!#
+mrst/settings/local.py
 
 ### Django ###
 *.log
