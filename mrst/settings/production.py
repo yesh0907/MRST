@@ -25,7 +25,7 @@ SECRET_KEY = '939t0y9rr*zsqrzgvlwt258if+kad%y(z1ubp@+2fg!tp2v2gk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.mrst.tech', 'mrst.tech']
+ALLOWED_HOSTS = ['www.mrst.tech', 'mrst.tech', 'mrst.herokuapp.com']
 
 
 # Application definition
