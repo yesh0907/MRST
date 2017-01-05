@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+Successfully Shortened!
+{% endblock title %}
+
+{% block content %}
+<div>
+	<h2 class="heading">Shortened URL Created!</h2>
+	<h4 class="url"><a href="{{ object.url }}" target="_blank">{{ object.url }}</a></h4>
+	<h4 class="shortened"><a href="{{ object.get_short_url }}" target="_blank">{{ object.get_short_url }}</a></h4>
+	<a href="/" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; New</a>
+</div>
+{% endblock content %}

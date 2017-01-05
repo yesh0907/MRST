@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}{% endblock title %} | MRST - URL Shortener</title>
+	<link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://getbootstrap.com/examples/cover/cover.css">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+<body>
+	<div id="bg">
+		<div class="site-wrapper">
+			<div class="site-wrapper-inner">
+				<div class="cover-container">
+					<div class="inner cover">
+						{% block content %}
+						{% endblock content %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
