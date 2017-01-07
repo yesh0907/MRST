@@ -16,3 +16,9 @@ def validate_url(url):
 		raise ValidationError("Invalid URL")
 
 	return new_url
+
+def validate_shortcode(shortcode):
+	if len(shortcode) < 4:
+		raise ValidationError("Shortcode too short! Minimum is 4")
+	elif len(shortcode) > 15:
+		raise ValidationError("Shortcode too long! Maximum is 15")

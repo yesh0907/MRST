@@ -8,6 +8,12 @@ Home
 <h2 class="cover-heading">{{ title }}</h2>
 <div class="col-sm-6 col-sm-offset-3">
 	<form method="POST" action=".">
+		{% if shortcode_exists %}
+		<div class="alert alert-dismissable alert-danger">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			The shortcode, <strong>{{ shortcode }}</strong>, already exists please use another one.
+		</div>
+		{% endif %}
 		{% csrf_token %}
 		<div class="form-group">
 			{{ form.as_p }}

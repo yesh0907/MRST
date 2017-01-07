@@ -6,7 +6,11 @@ Already Shortened
 
 {% block content %}
 <div>
-	<h2 class="heading">Already Been Shortened!</h2>
+	{% if updated %}
+		<h2 class="heading">URL Updated!</h2>
+	{% else %}
+		<h2 class="heading">Already Been Shortened!</h2>
+	{% endif %}
 	<h4 class="url"><a href="{{ object.url }}" target="_blank">{{ object.url }}</a></h4>
 	{% if object.clickevent %}<h5 class="count">Count: <strong>{{ object.clickevent.count}}</strong></h5>{% endif %}
 	<h4 class="shortened"><a href="{{ object.get_short_url }}" target="_blank">{{ object.get_short_url }}</a></h4>

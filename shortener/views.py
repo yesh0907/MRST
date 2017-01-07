@@ -25,12 +25,35 @@ class HomeView(View):
         }
 		template = "shortener/home.html"
 		if form.is_valid():
-			submitted_url = validate_url(form.cleaned_data.get("url"))
-			obj, created = ShortenURL.objects.get_or_create(url=submitted_url)
-			ctx = {
-				"object": obj,
-				"created": created
-			}
+			submitted_url = validate_url(form.cleaned_data.get("url")).lower()
+			submitted_shortcode = form.cleaned_data.get("custom_shortcode")
+
+			if submitted_shortcode == "":
+				obj, created = ShortenURL.objects.get_or_create(url=submitted_url)
+				ctx = {
+					"object": obj,
+					"created": created
+				}
+			else:
+				count = ShortenURL.objects.filter(shortcode=submitted_shortcode).count()
+				if count != 0:
+					ctx = {
+						"shortcode": submitted_shortcode,
+						"url": form.cleaned_data.get("url"),
+						"shortcode_exists": True,
+						"title": "MRST URL Shortener",
+            			"form": form
+					}
+					return render(request, "shortener/home.html", ctx)
+				else:
+					obj, created = ShortenURL.objects.get_or_create(url=submitted_url)
+					obj.shortcode = submitted_shortcode
+					obj.save()
+					ctx = {
+						"object": obj,
+						"created": created,
+						"updated": True
+					}
 			if created:
 				template = 'shortener/success.html'
 			else:
@@ -39,6 +62,5 @@ class HomeView(View):
 
 def redirect_view(request, shortcode=None):
 	obj = get_object_or_404(ShortenURL, shortcode=shortcode)
-	# save item
 	ClickEvent.objects.create_event(obj)
 	return HttpResponseRedirect(obj.url)
