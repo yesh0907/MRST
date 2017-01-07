@@ -11,7 +11,7 @@ Home
 		{% if shortcode_exists %}
 		<div class="alert alert-dismissable alert-danger">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			The shortcode, <strong>{{ shortcode }}</strong>, already exists please use another one.
+			<strong><a href="{{ short_url }}" target="_blank">{{ short_url }}</a></strong><br>The shortcode: <strong>{{ shortcode }}</strong> is already in use, please use another one.
 		</div>
 		{% endif %}
 		{% csrf_token %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
+from django.conf import settings
 
 from analytics.models import ClickEvent
 from .models import ShortenURL
@@ -39,7 +40,9 @@ class HomeView(View):
 				if count != 0:
 					ctx = {
 						"shortcode": submitted_shortcode,
-						"url": form.cleaned_data.get("url"),
+						"short_url": "{root_host}/{scode}".format(
+										root_host=settings.DEFAULT_REDIRECT_URL,
+										scode=submitted_shortcode),
 						"shortcode_exists": True,
 						"title": "MRST URL Shortener",
             			"form": form
